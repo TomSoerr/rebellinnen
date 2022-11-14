@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto&display=swap');
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-1: #417AE3;
+  --color-2: #c1ccee;
+  --color-3: #D35904;
+  --color-text: #432818;
+  --color-bg: #f2f6ff;
+  font-size: 17px;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+#sec-1 {
+  /* overflow: hidden; */
+  position: relative;
+  font-family: 'Oswald', sans-serif;
+  width: 100%;
+  height: 30rem;
+}
+
+
+#sec-1 > #desert {
+  background-image: url(./img/sec-1-background.jpg);
+  background-size:cover;
+  background-position: center;
+  width: 100%;
+  height: 30rem;
+  position: fixed;
+  z-index: -1;
+}
+
+#sec-1 #waves {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+#sec-2 {
+  background-color: var(--color-2);
+  width: 100vw;
+  min-height: 100vh;
+  display: grid;
+  grid:   "quote quote img" 1fr
+          ". name name" auto /
+          1fr 1fr 3fr;
+  padding-bottom: 20vh;
+}
+
+#sec-2 #img {
+  grid-area: img;
+}
+
+#sec-2 #name {
+  grid-area: name;
+  background-color: var(--color-1);
+  color: var(--color-bg);
+  padding: 2rem;
+  border-bottom-left-radius: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: normal;
+}
+
+#sec-2 #name span {
+  font-weight: 400;
+}
+
+#sec-2 #quote {
+  grid-area: quote;
+  padding: 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: normal;
+}
+
+#sec-3 {
+  background-color: inherit;
+}
+
+#sec-3 p {
+  width: clamp(45ch, 50%, 75ch);
+  margin: 2rem auto 2rem auto;
+}
