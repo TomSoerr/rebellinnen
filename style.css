@@ -22,21 +22,72 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-#sec-1 {
-  /* overflow: hidden; */
-  position: relative;
+p {
+  margin: 1em 0
+}
+
+h2 {
+  margin: 0.83em 0;
   font-family: 'Oswald', sans-serif;
-  width: 100%;
-  height: 30rem;
 }
 
 
+#sec-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--color-bg);
+  width: 100%;
+  z-index: 1;
+  border-bottom: thin solid var(--color-2);
+}
+
+#sec-nav > ul {
+  padding: 0.5rem 2rem;
+  list-style-type: none;
+  display: grid;
+  grid-auto-flow: column;
+  margin-left: auto;
+  justify-content: right;
+  gap: 2rem;
+  white-space: nowrap;
+}
+
+#sec-nav > ul > li {
+  position: relative;
+}
+
+#sec-nav li > ul {
+  list-style-type: none;
+  padding: 1rem;
+  padding-top: 0;
+  background-color: var(--color-bg);
+  display: grid;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateY(calc(100% + 0.5rem)) translateX(-1rem);
+  gap: 1rem;
+  opacity: 0;
+}
+
+#sec-nav li > ul:hover {
+  opacity: 1;
+}
+
+#sec-1 {
+  /* overflow: hidden; */
+  position: relative;
+  width: 100%;
+  height: 60vh;
+}
+
 #sec-1 > #desert {
   background-image: url(./img/sec-1-background.jpg);
-  background-size:cover;
+  background-size: cover;
   background-position: center;
   width: 100%;
-  height: 30rem;
+  height: 60vh;
   position: fixed;
   z-index: -1;
 }
@@ -46,22 +97,32 @@ body {
   position: absolute;
   left: 0;
   bottom: 0;
-  z-index: 1;
 }
 
 #sec-2 {
+  font-family: 'Oswald', sans-serif;
   background-color: var(--color-2);
   width: 100vw;
   min-height: 100vh;
   display: grid;
   grid:   "quote quote img" 1fr
-          ". name name" auto /
+          ". name name" auto
+          ". . ." 20vh /
           1fr 1fr 3fr;
-  padding-bottom: 20vh;
 }
 
 #sec-2 #img {
   grid-area: img;
+  position: relative;
+  margin: 2rem;
+}
+
+#sec-2 #img img {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
 }
 
 #sec-2 #name {
@@ -87,11 +148,65 @@ body {
   line-height: normal;
 }
 
-#sec-3 {
+.sec-text {
   background-color: inherit;
 }
 
-#sec-3 p {
+.text {
   width: clamp(45ch, 50%, 75ch);
-  margin: 2rem auto 2rem auto;
+  padding: 2rem 0 2rem 0;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 900px) {
+  #sec-2 {
+    grid:   ". img ." 45vh
+            ". name name" auto 
+            "quote quote ." auto
+            ". . ." 20vh /
+            4rem 1fr 4rem;
+  }
+
+}
+
+@media only screen and (max-width: 530px) {
+  :root {
+    font-size: 16px;
+  }
+  
+
+  #sec-1 {
+    height: 50vh;
+  }
+
+  #sec-1 > #desert {
+    height: 50vh;
+  }
+
+  #sec-2 #name {
+    font-size: 1.5rem;
+  }
+
+  #sec-2 #quote {
+    font-size: 1.1rem;
+  }
+  
+
+  #sec-3 p {
+    width: 100%;
+    padding: 2rem;
+  }
+
+  #sec-2 {
+    grid:   "img" 20vh
+            "name" auto 
+            "quote" auto /
+            1fr;
+
+    align-content: center;
+  }
+
+  #sec-2 #name {
+    border-bottom-left-radius: 0;
+  }
 }
