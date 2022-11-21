@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto&display=swap');
 
-*, *::before, *::after {
+body *, body *::before, body *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -9,21 +9,26 @@
 :root {
   --color-1: #417AE3;
   --color-2: #c1ccee;
-  --color-3: #D35904;
+  --color-3: #db384e;
   --color-text: #432818;
   --color-bg: #f2f6ff;
   font-size: 17px;
+  scroll-behavior: smooth;
 }
+
+/* GENERAL STYLES */
 
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
   line-height: 1.5rem;
   font-family: 'Roboto', sans-serif;
+  overscroll-behavior: none;
+  scroll-behavior: smooth;
 }
 
 p {
-  margin: 1em 0
+  margin: 1em 0;
 }
 
 h2 {
@@ -31,6 +36,45 @@ h2 {
   font-family: 'Oswald', sans-serif;
 }
 
+a,
+a:visited,
+#sec-nav > ul > li:first-child > span {
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--color-text);
+  position: relative;
+  cursor: pointer;
+}
+
+a:hover::before,
+#sec-nav > ul > li:first-child > span:hover::before {
+  position: absolute;
+  content: "";
+  width: 4px;
+  height: 1rem;
+  top: 0;
+  left: 0;
+  transform: translateX(-6px);
+  background-color: var(--color-3);
+}
+
+a:active {
+  color: var(--color-3);
+}
+
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+}
+
+/* NAVIGATION BAR  */
+
+#zsmf, #leben, #auszeichnungen {
+  scroll-margin-top: calc(3rem + 0.83rem);
+}
 
 #sec-nav {
   position: fixed;
@@ -39,11 +83,19 @@ h2 {
   background-color: var(--color-bg);
   width: 100%;
   z-index: 1;
-  border-bottom: thin solid var(--color-2);
+  border-bottom: medium solid var(--color-text);
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: 2rem;
+  align-items: center;
+  padding: 0.5rem 2rem;
+}
+
+#sec-nav img {
+  height: 100%;
 }
 
 #sec-nav > ul {
-  padding: 0.5rem 2rem;
   list-style-type: none;
   display: grid;
   grid-auto-flow: column;
@@ -53,27 +105,32 @@ h2 {
   white-space: nowrap;
 }
 
-#sec-nav > ul > li {
+#sec-nav > ul > li:first-child {
   position: relative;
+}
+
+#sec-nav > ul > li:hover > ul {
+  display: grid;
 }
 
 #sec-nav li > ul {
   list-style-type: none;
   padding: 1rem;
-  padding-top: 0;
   background-color: var(--color-bg);
-  display: grid;
   position: absolute;
   left: 0;
   bottom: 0;
-  transform: translateY(calc(100% + 0.5rem)) translateX(-1rem);
+  transform: translateY(100%) translateX(-1rem);
   gap: 1rem;
-  opacity: 0;
+  display: none;
+  border-bottom: medium solid var(--color-text);
 }
 
 #sec-nav li > ul:hover {
-  opacity: 1;
+  display: grid;
 }
+
+/* BIG IMAGE SECTION  */
 
 #sec-1 {
   /* overflow: hidden; */
@@ -98,6 +155,8 @@ h2 {
   left: 0;
   bottom: 0;
 }
+
+/* AMINATOU QUOATE AND PICTURE SECTION */
 
 #sec-2 {
   font-family: 'Oswald', sans-serif;
@@ -144,19 +203,46 @@ h2 {
   grid-area: quote;
   padding: 2rem;
   font-size: 1.5rem;
+  font-style: italic;
   font-weight: 600;
   line-height: normal;
+  scroll-margin-top: 3rem;
 }
+
+/* VIDEO SECTION */
+
+#sec-video {
+  width: 100vw;
+  height: auto;
+  background-color: inherit;
+  overflow: hidden;
+}
+
+/* GENERAL TEXT SECTIONS */
 
 .sec-text {
   background-color: inherit;
 }
 
 .text {
-  width: clamp(45ch, 50%, 75ch);
-  padding: 2rem 0 2rem 0;
+  width: clamp(45ch, 70%, 75ch);
+  padding: 2rem 0;
   margin: 0 auto;
 }
+
+.text ul {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 1rem;
+  list-style-image: url(./img/list-img.svg);
+}
+
+.text ul > li::marker {
+  height: 1rem;
+}
+
+/* RESPONSIVENESS */
 
 @media only screen and (max-width: 900px) {
   #sec-2 {
@@ -170,11 +256,11 @@ h2 {
 }
 
 @media only screen and (max-width: 530px) {
+  /* changing the rem size so all rem values adapt */
   :root {
     font-size: 16px;
   }
   
-
   #sec-1 {
     height: 50vh;
   }
@@ -191,8 +277,7 @@ h2 {
     font-size: 1.1rem;
   }
   
-
-  #sec-3 p {
+  .sec-text .text {
     width: 100%;
     padding: 2rem;
   }
@@ -202,7 +287,6 @@ h2 {
             "name" auto 
             "quote" auto /
             1fr;
-
     align-content: center;
   }
 
