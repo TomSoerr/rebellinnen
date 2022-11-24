@@ -7,7 +7,7 @@ body *, body *::before, body *::after {
 }
 
 :root {
-  --color-1: #417AE3;
+  --color-1: #4d4a95;
   --color-2: #c1ccee;
   --color-3: #db384e;
   --color-text: #432818;
@@ -83,11 +83,12 @@ blockquote {
   background-color: var(--color-bg);
   width: 100%;
   z-index: 1;
-  border-bottom: medium solid var(--color-text);
+  box-shadow: 0px 3px 10px -5px var(--color-text);
   display: grid;
   grid-auto-flow: column;
   grid-template-rows: 2rem;
   align-items: center;
+  justify-content: space-between;
   padding: 0.5rem 2rem;
 }
 
@@ -99,8 +100,6 @@ blockquote {
   list-style-type: none;
   display: grid;
   grid-auto-flow: column;
-  margin-left: auto;
-  justify-content: right;
   gap: 2rem;
   white-space: nowrap;
 }
@@ -123,7 +122,7 @@ blockquote {
   transform: translateY(100%) translateX(-1rem);
   gap: 1rem;
   display: none;
-  border-bottom: medium solid var(--color-text);
+  border-bottom: thin solid var(--color-text);
 }
 
 #sec-nav li > ul:hover {
@@ -190,6 +189,7 @@ blockquote {
   color: var(--color-bg);
   padding: 2rem;
   border-bottom-left-radius: 2rem;
+  border-top-left-radius: 2rem;
   font-size: 2rem;
   font-weight: 700;
   line-height: normal;
@@ -292,5 +292,6 @@ blockquote {
 
   #sec-2 #name {
     border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
   }
 }
